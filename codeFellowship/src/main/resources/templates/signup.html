@@ -8,7 +8,7 @@
 <main>
     <h2>Sign Up</h2>
 
-    <form method="POST" action="/signup">
+    <form method="POST" action="@{/signup}">
 
         <label  for="username">
             <p class="label-txt">ENTER Username</p>
@@ -26,25 +26,25 @@
             </div>
         </label>
 
-        <label  for="firstname">
+        <label  for="firstName">
             <p class="label-txt">ENTER FIRST NAME</p>
-            <input type="text" class="input" name="firstname" id="firstname">
+            <input type="text" class="input" name="firstName" id="firstName">
             <div class="line-box">
                 <div class="line"></div>
             </div>
         </label>
 
-        <label  for="lastname">
+        <label  for="lastName">
             <p class="label-txt">ENTER LAST NAME</p>
-            <input type="text" class="input" name="lastname" id="lastname">
+            <input type="text" class="input" name="lastName" id="lastName">
             <div class="line-box">
                 <div class="line"></div>
             </div>
         </label>
 
-        <label  for="dob">
+        <label  for="dateOfBirth">
             <p class="label-txt">Date of Birth</p>
-            <input type="date" class="input" name="dob" id="dob">
+            <input type="date" class="input" name="dateOfBirth" id="dateOfBirth">
             <div class="line-box">
                 <div class="line"></div>
             </div>
@@ -60,7 +60,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Signup</button>
     </form>
 
 </main>

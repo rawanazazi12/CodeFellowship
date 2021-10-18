@@ -4,12 +4,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import javax.xml.crypto.Data;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-
+@Transactional
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id

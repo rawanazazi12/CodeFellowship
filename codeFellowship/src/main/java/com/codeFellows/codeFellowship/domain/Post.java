@@ -1,9 +1,11 @@
 package com.codeFellows.codeFellowship.domain;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.security.Timestamp;
 
 
+@Transactional
 @Entity
 public class Post {
 
