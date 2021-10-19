@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>post</title>
+</head>
+<body>
+
+<main>
+
+        <form method="POST" th:action="@{/posts}" >
+
+            <label  for="body">
+                <p class="label-txt" style="padding-bottom: 50px;">Add post</p>
+                <textarea name="body" id="body" class="input" rows="10" cols="600"></textarea>
+            </label>
+
+            <input type="submit" />
+        </form>
+
+</main>
+
+</body>
+</html>
