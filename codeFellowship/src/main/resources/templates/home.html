@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -10,14 +10,19 @@
     <h1 class="display-4">Codefellowship</h1>
     <h2>Welcome, <span th:text="${principal}"></span>!</h2>
     <p class="lead">Code Fellows enables you to challenge your learning every day, and motivates you to be an impactful individual and a strong team player.</p>
-    <hr class="my-4">
     <p>Don't miss the Chance, Sign Up with us Now !</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/signup" role="button">Signup</a>
+    <p >
+        <a class="btn" href="/signup" role="button">Signup</a>
     </p>
+<!--    th:action="@{/login}" method="post"-->
+    <form >
+        <a th:href="@{/login}" >Login</a>
+<!--        <a th:href="@{/}" class="btn btn-primary">Login</a>-->
+<!--        <input type="submit" href="/login" value="Login"/>-->
+    </form>
 </div>
 <footer>
-    <p>copyright &copy; 2021 Rawan Alazazi </p>
+    <p>copyright &copy; 2021 ASAC </p>
 </footer>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ApplicationController {
@@ -38,12 +40,19 @@ public class ApplicationController {
     }
 
     @GetMapping("/login")
-    public String getLoginPage() {
-        return "login";
+    public String getLoginPage(Model model) {
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass() == ApplicationUser.class){
+
+            ApplicationUser user = (ApplicationUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            System.out.println(user);
+            model.addAttribute("appUser",user);
+        }
+
+        return "/login";
     }
 
     @PostMapping("/signup")
-    public RedirectView createUser( @RequestParam (value = "username") String username,
+    public RedirectView createUser(@RequestParam (value = "username") String username,
                                     @RequestParam (value = "password") String password,
                                     @RequestParam (value = "dateOfBirth") String dateOfBirth,
                                     @RequestParam (value = "firstName") String firstName,
@@ -61,7 +70,7 @@ public class ApplicationController {
     @GetMapping("/users")
     public String getUsersPage(Principal principal, Model model) {
         ApplicationUser appUser = appUserRepository.findUserByUsername(principal.getName());
-        List<ApplicationUser> users = (List<ApplicationUser>) appUserRepository.findAll();
+        List<ApplicationUser> users = appUserRepository.findAll();
         model.addAttribute("appUser",appUser);
         model.addAttribute("principal", principal.getName());
         model.addAttribute("users", users);
@@ -74,6 +83,14 @@ public class ApplicationController {
         model.addAttribute("appUser",appUser);
         model.addAttribute("principal", principal.getName());
         return "myProfile";
+    }
+
+    @GetMapping("/users/{id}")
+    public String getSingleAppUserPage(Model model, Principal principal, @PathVariable Long id) {
+       ApplicationUser appUser = appUserRepository.findUserById (id);
+        model.addAttribute("appUser", appUser);
+        model.addAttribute("principal", principal.getName());
+        return "oneUser";
     }
 
 

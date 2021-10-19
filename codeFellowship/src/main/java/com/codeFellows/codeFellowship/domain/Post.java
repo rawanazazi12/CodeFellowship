@@ -1,8 +1,14 @@
 package com.codeFellows.codeFellowship.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.security.Timestamp;
+//import java.security.Timestamp;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Transactional
@@ -14,11 +20,14 @@ public class Post {
     long id;
 
     String body;
-    Timestamp createdAt;
-
     @ManyToOne
     @JoinColumn(name="username")
     ApplicationUser applicationUser;
+
+//    @CreationTimestamp
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Timestamp createdAt;
 
     public Post(){}
 
@@ -27,6 +36,11 @@ public class Post {
         this.createdAt = createdAt;
         this.applicationUser = applicationUser;
     }
+
+    public Post(String body, ApplicationUser user) {
+    }
+
+
 
     public String getBody() {
         return body;

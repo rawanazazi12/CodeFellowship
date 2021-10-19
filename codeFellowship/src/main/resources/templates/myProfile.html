@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www,thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profile</title>
 </head>
 <body>
 
 <main>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 img">
-                    <img src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"  alt="" >
+        <div >
+            <div >
+                <div>
+                    <img src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" height="100px", width="100px"  alt="" >
                 </div>
                 <div class="col-md-6 details">
-                    <blockquote>
                         <h2>Hello, <span th:text="${appUser.firstName}"></span></h2>
-                    </blockquote>
                     <p>First Name: <span th:text="${appUser.firstName}"></span></p>
                     <p>Last Name: <span th:text="${appUser.lastName}"></span></p>
                     <p>Date of Birth: <span th:text="${appUser.dateOfBirth}"></span></p>
                     <p>Bio: <span th:text="${appUser.bio}"></span></p>
+<!--                    <a th:href="@{/logout}" class="btn btn-primary">Logout</a>-->
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Log Out"/>
+                    </form>
+                </div>
+
+                <h3>My posts</h3>
+                <div th:each="post : ${appUser.posts}" style="border-style: solid;">
+                    <div >
+                        <div >
+                            <p ><span th:text="${post.body}"></span></p>
+                            <p >Created at: <span th:text="${post.createdAt}"></span></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SignUp</title>
@@ -8,57 +8,36 @@
 <main>
     <h2>Sign Up</h2>
 
-    <form method="POST" action="@{/signup}">
+    <form method="POST" th:action="@{/signup}">
 
         <label  for="username">
-            <p class="label-txt">ENTER Username</p>
+            <p > Username</p>
             <input type="text" class="input" name="username" id="username">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
 
         <label  for="password">
-            <p class="label-txt">ENTER PASSWORD</p>
+            <p > Password</p>
             <input type="password" class="input" name="password" id="password">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
-
         <label  for="firstName">
-            <p class="label-txt">ENTER FIRST NAME</p>
+            <p> First Name </p>
             <input type="text" class="input" name="firstName" id="firstName">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
 
         <label  for="lastName">
-            <p class="label-txt">ENTER LAST NAME</p>
+            <p class="label-txt">Last Name</p>
             <input type="text" class="input" name="lastName" id="lastName">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
 
         <label  for="dateOfBirth">
             <p class="label-txt">Date of Birth</p>
             <input type="date" class="input" name="dateOfBirth" id="dateOfBirth">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
 
         <label  for="bio">
             <p class="label-txt">Bio</p>
             <input type="text" class="input" name="bio" id="bio">
-            <div class="line-box">
-                <div class="line"></div>
-            </div>
         </label>
-
-
 
         <button type="submit" class="btn btn-primary">Signup</button>
     </form>
