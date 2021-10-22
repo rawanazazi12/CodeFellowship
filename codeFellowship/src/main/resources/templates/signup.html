@@ -1,5 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+    .form-floating{text-align:center;}
+    h2{
+    padding-top:3%;
+    padding-bottom:1%;
+text-align:center;
+color:white;
+}
+body{
+background-color:#911F27;
+color:white;}
+.form-control{
+width:400px;
+}
+.input{
+width:400px;
+}
+
+.footer{color:#F9F3DF;
+margin-top:4%;
+text-align:center;}
+label{
+font-size:18px;}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>SignUp</title>
@@ -8,40 +39,62 @@
 <main>
     <h2>Sign Up</h2>
 
-    <form method="POST" th:action="@{/signup}">
+    <form class="form-floating" method="POST" th:action="@{/signup}" >
+        <div class="form-floating mb-3">
+            <label   for="username">
+                <p > Username</p>
+                <input type="text" class="form-control" name="username" id="username" >
+            </label>
 
-        <label  for="username">
-            <p > Username</p>
-            <input type="text" class="input" name="username" id="username">
-        </label>
+        </div>
 
-        <label  for="password">
-            <p > Password</p>
-            <input type="password" class="input" name="password" id="password">
-        </label>
-        <label  for="firstName">
-            <p> First Name </p>
-            <input type="text" class="input" name="firstName" id="firstName">
-        </label>
+        <div class="form-floating">
+            <label  for="password">
+                <p > Password</p>
+                <input type="password" class="form-control" name="password" id="password" >
+            </label>
+        </div>
+        <div class="form-floating">
+            <label  for="password">
+                <p >Retype Password</p>
+                <input type="password" class="form-control" name="password" id="confirmPassword" >
+            </label>
+        </div>
+       <div class="form-floating">
+           <label  for="firstName">
+               <p> First Name </p>
+               <input type="text" class="form-control" name="firstName" id="firstName" >
+           </label>
+       </div>
 
-        <label  for="lastName">
-            <p class="label-txt">Last Name</p>
-            <input type="text" class="input" name="lastName" id="lastName">
-        </label>
+<div  class="form-floating">
+    <label  for="lastName">
+        <p class="label-txt">Last Name</p>
+        <input type="text" class="form-control" name="lastName" id="lastName" >
+    </label>
+</div>
 
-        <label  for="dateOfBirth">
-            <p class="label-txt">Date of Birth</p>
-            <input type="date" class="input" name="dateOfBirth" id="dateOfBirth">
-        </label>
+<div class="form-floating">
+    <label  for="dateOfBirth">
+        <p class="label-txt">Date of Birth</p>
+        <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" >
+    </label>
+</div>
 
-        <label  for="bio">
-            <p class="label-txt">Bio</p>
-            <input type="text" class="input" name="bio" id="bio">
-        </label>
+<div class="form-floating">
+    <label  for="bio">
+        <p class="label-txt">Bio</p>
+        <input type="text" class="form-control" name="bio" id="bio" >
+    </label>
+</div>
 
-        <button type="submit" class="btn btn-primary">Signup</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#F9F3DF; margin-left:47.5%;border: #F9F3DF;color:#911F27; margin-right:46.5%;font-weight:bold;">Signup</button>
     </form>
 
+
 </main>
+<footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+</footer>
 </body>
 </html>

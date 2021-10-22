@@ -22,7 +22,7 @@ public class Post {
     String body;
     @ManyToOne
     @JoinColumn(name="username")
-    ApplicationUser applicationUser;
+    ApplicationUser appUser;
 
 //    @CreationTimestamp
 //    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -31,10 +31,10 @@ public class Post {
 
     public Post(){}
 
-    public Post(String body, Timestamp createdAt, ApplicationUser applicationUser) {
+    public Post(String body, Timestamp createdAt, ApplicationUser appUser) {
         this.body = body;
         this.createdAt = createdAt;
-        this.applicationUser = applicationUser;
+        this.appUser = appUser;
     }
 
     public Post(String body, ApplicationUser user) {
@@ -59,11 +59,11 @@ public class Post {
     }
 
     public ApplicationUser getAppUser() {
-        return applicationUser;
+        return appUser;
     }
 
     public void setAppUser(ApplicationUser applicationUser) {
-        this.applicationUser = applicationUser;
+        this.appUser = applicationUser;
     }
 }
 

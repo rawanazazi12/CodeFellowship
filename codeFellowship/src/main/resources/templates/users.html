@@ -1,5 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+body {background-color: #F9F3DF;
+color:#3D0000;
+text-align:center;}
+
+ul li{
+list-style:none;}
+li a{
+text-decoration:none;
+color:#3D0000;}
+a:hover{
+color:#3D0000;
+background-color:#F9F3D}
+.footer{color:#3D0000;
+margin-top:30%;
+text-align:center;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
@@ -9,11 +32,11 @@
 <body>
 <main>
 
-<h2>Users</h2>
+<h2  style="margin-top:2%;margin-bottom:2%;text-align:center" class="display-4">Users</h2>
 
 <ul class="user-list">
-    <li th:each="user : ${users}">
-        <a th:href="@{'/users/' + ${user.id}}">
+    <li th:each="user : ${users}" style="margin-top:2%;text-align:center">
+        <a th:href="@{'/users/' + ${user.id}}" class="lead">
             <span th:text="${user.username}"></span>
         </a>
     </li>
@@ -23,5 +46,7 @@
 
 
 </body>
-
+<footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+</footer>
 </html>

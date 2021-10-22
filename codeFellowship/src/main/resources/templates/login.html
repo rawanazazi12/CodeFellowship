@@ -1,5 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+    .form-floating{text-align:center;
+    padding-top:1%;}
+    h2{
+    padding-top:3%;
+    padding-bottom:3%;
+    text-align:center;
+    color:white;
+}
+body{
+background-color:#911F27;
+color:white;}
+.form-control{
+width:400px;
+margin-left:35%;
+}
+
+footer{color:#F9F3DF;
+text-align:center;}
+.footer{color:#F9F3DF;
+margin-top:14%;
+text-align:center;
+}
+label{
+font-size:18px;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>login page</title>
@@ -7,26 +39,28 @@
 <body>
 <main>
     <h2>Login</h2>
+    <form class="form-floating" method="POST" action="/login">
+    <div class="form-floating mb-3" >
+        <label for="floatingInput">Username</label>
+        <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" >
 
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Password</label>
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
 
-    <form method="POST" action="/login">
-
-        <label  for="username">
-            <p class="label-txt"> Username</p>
-            <input type="text" class="input" name="username" id="username">
-        </label>
-
-        <label  for="password">
-            <p> Password</p>
-            <input type="password" class="input" name="password" id="password">
-        </label>
+    </div>
         <form th:action="@{/myProfile}" method="post">
-            <input type="submit" value="Login"/>
+            <input type="submit" value="Login" class="btn btn-primary" style="background-color:#F9F3DF; margin-left:47.5%;border: #F9F3DF;color:#911F27; margin-right:47.5%;font-weight:bold;margin-top:2%"/>
         </form>
 
-<!--        <button type="submit" class="btn">Login</button>-->
     </form>
+
+
     </main>
+    <footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+    </footer>
 
 </body>
 </html>

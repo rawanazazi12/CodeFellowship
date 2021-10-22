@@ -1,31 +1,95 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+body {background-color: #F9F3DF;
+color:#3D0000;
+text-align:center;}
+h1  {color: #3D0000;
+text-align:center;
+}
+p {color: black;
+text-align:center;
+padding:1%;}
+header{background-color:#F9F3DF;
+margin-top:0}
+.display-4{
+padding-top:2%;}
+h2{text-align:center;
+padding-top:5%;
+}
+
+
+li a{
+text-decoration:none;
+color:#3D0000;}
+a:hover{
+color:#F9F3DF;
+background-color:#3D0000;}
+.display-4{
+margin-left:25%;
+}
+.footer{color:#3D0000;
+margin-top:4%;
+text-align:center;}
+
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
 </head>
 <body>
+<header>
+    <div style="float:right; padding:1%">
+        <img src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" height="90px", width="90px"  alt="" >
+    </div>
+    <h2 style="float:right; padding:2%;font-size:23px">Hello, <span th:text="${appUser.firstName}" style="float:right;font-size:23px; "></span></h2>
+    <form th:action="@{/logout}" method="post" style="float:right; margin-top:6%;margin-right:-130px">
+        <input class="btn btn-primary" style="background-color:#3D0000;border: #F9F3DF;" type="submit" value="Log Out"/>
+    </form>
+    <h1 class="display-4">My Profile</h1>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/following">Following</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/feed">Posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/post">Add Post</a>
+        </li>
+    </ul>
+
+
+</header>
 
 <main>
         <div >
             <div >
-                <div>
-                    <img src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" height="100px", width="100px"  alt="" >
-                </div>
-                <div class="col-md-6 details">
-                        <h2>Hello, <span th:text="${appUser.firstName}"></span></h2>
-                    <p>First Name: <span th:text="${appUser.firstName}"></span></p>
-                    <p>Last Name: <span th:text="${appUser.lastName}"></span></p>
-                    <p>Date of Birth: <span th:text="${appUser.dateOfBirth}"></span></p>
-                    <p>Bio: <span th:text="${appUser.bio}"></span></p>
-<!--                    <a th:href="@{/logout}" class="btn btn-primary">Logout</a>-->
-                    <form th:action="@{/logout}" method="post">
-                        <input type="submit" value="Log Out"/>
-                    </form>
+
+                <div class="col-md-6 details" style="float:left">
+                    <h3 style="margin-left:-200px;margin-top:6%">Info</h3>
+                    <p style="margin-left:-200px">First Name: <span th:text="${appUser.firstName}"></span></p>
+                    <p style="margin-left:-200px">Last Name: <span th:text="${appUser.lastName}"></span></p>
+                    <p style="margin-left:-200px">Date of Birth: <span th:text="${appUser.dateOfBirth}"></span></p>
+                    <p style="margin-left:-200px">Bio: <span th:text="${appUser.bio}"></span></p>
+
                 </div>
 
-                <h3>My posts</h3>
-                <div th:each="post : ${appUser.posts}" style="border-style: solid;">
+                <h3 style="padding-top:3%;padding-bottom:1%;margin-right:10%;">My posts</h3>
+                <div th:each="post : ${appUser.posts}" style="border-style: solid;border-radius: 15px;border-width: medium; width:50%;text-align:center;margin-left:47%;margin-bottom:2%;">
                     <div >
                         <div >
                             <p ><span th:text="${post.body}"></span></p>
@@ -40,4 +104,7 @@
     </main>
 
 </body>
+<footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+</footer>
 </html>

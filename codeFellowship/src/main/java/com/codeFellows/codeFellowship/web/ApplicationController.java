@@ -93,5 +93,30 @@ public class ApplicationController {
         return "oneUser";
     }
 
+    @GetMapping("/following")
+    public String getFollowingPage(Principal principal, Model model) {
+        ApplicationUser appUser = appUserRepository.findUserByUsername(principal.getName());
+        Iterable<ApplicationUser> users = appUser.getFollowing();
+        model.addAttribute("appUser",appUser);
+        model.addAttribute("principal", principal.getName());
+        model.addAttribute("users", users);
+        return "following";
+    }
+
+
+    @PostMapping("/follow/{id}")
+    public RedirectView followUser(Principal principal, @PathVariable long id) throws ParseException {
+
+        ApplicationUser loggedInUser = appUserRepository.findUserByUsername(principal.getName());
+        ApplicationUser userToFollow = appUserRepository.findUserById(id);
+
+        loggedInUser.getFollowing().add(userToFollow);
+        userToFollow.getFollowers().add(loggedInUser);
+        appUserRepository.save(loggedInUser);
+        appUserRepository.save(userToFollow);
+
+        return new RedirectView("/users");
+    }
+
 
 }

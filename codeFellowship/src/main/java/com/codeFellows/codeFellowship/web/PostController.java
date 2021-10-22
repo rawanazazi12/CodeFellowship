@@ -5,6 +5,8 @@ import com.codeFellows.codeFellowship.domain.Post;
 import com.codeFellows.codeFellowship.infrastructure.AppUserRepository;
 import com.codeFellows.codeFellowship.infrastructure.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PostController {
@@ -51,5 +55,19 @@ public class PostController {
         model.addAttribute("appUser",appUser);
 
         return "posts";
+    }
+
+    @GetMapping("/feed")
+    public String getFollowingsPosts(Model model){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ApplicationUser appUser = appUserRepository.findUserByUsername(userDetails.getUsername());
+        Set<ApplicationUser> following = appUser.getFollowing();
+//        Set posts = (Set) postRepository.findByAppUserIn(following);
+
+        model.addAttribute("appUser",appUser);
+//        model.addAttribute("principal",principal.getName());
+        model.addAttribute("following",following);
+
+        return "feed";
     }
 }
