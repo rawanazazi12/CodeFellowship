@@ -9,6 +9,7 @@ import javax.xml.crypto.Data;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 @Entity
@@ -31,8 +32,15 @@ public class ApplicationUser implements UserDetails {
     private String email;
 
 
-    @OneToMany(mappedBy = "applicationUser")
+    @OneToMany(mappedBy = "appUser")
     List<Post> posts;
+
+    @ManyToMany
+    private Set<ApplicationUser> followers;
+
+    @ManyToMany
+    private Set<ApplicationUser> following;
+
 
     public ApplicationUser() {
 
@@ -139,6 +147,22 @@ public class ApplicationUser implements UserDetails {
 
     public List<Post> getPosts() {
         return posts;
+    }
+
+    public void setFollowers(Set<ApplicationUser> followers) {
+        this.followers = followers;
+    }
+
+    public void setFollowing(Set<ApplicationUser> following) {
+        this.following = following;
+    }
+
+    public Set<ApplicationUser> getFollowers() {
+        return followers;
+    }
+
+    public Set<ApplicationUser> getFollowing() {
+        return following;
     }
 
     @Override

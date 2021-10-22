@@ -1,28 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<link href="./static/style.css"  rel="stylesheet">
+<style>
+body {background-color: #F9F3DF;
+color:#3D0000;}
+h1  {color: white;
+text-align:center;
+}
+p {color: black;
+text-align:center;
+padding:1%;}
+header{background-color:#3D0000;
+margin-top:0}
+.display-4{
+padding-top:2%;}
+h2{text-align:center;
+padding-top:5%;
+}
+
+.btn btn-primary{
+background-color:#3D0000;
+text-align:center;
+}
+footer{background-color:#3D0000;
+margin-top:7%;
+padding:2%;
+}
+.footer{color:#F9F3DF;}
+.nav-item{
+color:#F9F3DF;
+}
+li a{
+text-decoration:none;
+color:#F9F3DF;}
+a:hover{
+color:#3D0000;
+background-color:#F9F3DF;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
+<header>
+    <h1 class="display-4">Codefellowship</h1>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/signup">Signup</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+        </li>
+    </ul>
+
+</header>
 
 <div >
-    <h1 class="display-4">Codefellowship</h1>
+
     <h2>Welcome, <span th:text="${principal}"></span>!</h2>
     <p class="lead">Code Fellows enables you to challenge your learning every day, and motivates you to be an impactful individual and a strong team player.</p>
     <p>Don't miss the Chance, Sign Up with us Now !</p>
     <p >
-        <a class="btn" href="/signup" role="button">Signup</a>
+        <a  href="/signup" role="button" class="btn btn-primary" style="background-color:#3D0000;border: #F9F3DF;">Signup</a>
     </p>
-<!--    th:action="@{/login}" method="post"-->
+    <p>If you already have an account</p>
     <form >
-        <a th:href="@{/login}" >Login</a>
-<!--        <a th:href="@{/}" class="btn btn-primary">Login</a>-->
-<!--        <input type="submit" href="/login" value="Login"/>-->
+        <a th:href="@{/login}" class="btn btn-primary" style="background-color:#3D0000; margin-left:47.5%;border: #F9F3DF;">Login</a >
     </form>
 </div>
 <footer>
-    <p>copyright &copy; 2021 ASAC </p>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
 </footer>
 </body>
 </html>

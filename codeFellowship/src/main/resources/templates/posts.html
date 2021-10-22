@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+body {background-color: #F9F3DF;
+color:#3D0000;
+text-align:center;}
+.footer{color:#3D0000;
+margin-top:10%;
+text-align:center;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>post</title>
@@ -11,14 +25,17 @@
         <form method="POST" th:action="@{/posts}" >
 
             <label  for="body">
-                <p class="label-txt" style="padding-bottom: 50px;">Add post</p>
-                <textarea name="body" id="body" class="input" rows="10" cols="600"></textarea>
+                <p class="display-4" style="padding: 50px;">Add a Post</p>
+                <textarea name="body" id="body" class="input" rows="10" cols="600" style="width:50%"></textarea>
             </label>
 
-            <input type="submit" />
+            <input type="Submit" value="Create" class="btn btn-primary" style="background-color:#3D0000; margin-left:44%;border: #F9F3DF;color:white; margin-right:46.5%;font-weight:bold;"/>
         </form>
 
 </main>
 
 </body>
+<footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+</footer>
 </html>

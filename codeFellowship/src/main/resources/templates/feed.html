@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+<style>
+body {background-color: #F9F3DF;
+color:#3D0000;
+text-align:center;}
+.footer{color:#3D0000;
+margin-top:30%;
+text-align:center;}
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Feed</title>
+</head>
+<body>
+
+<header>
+  <h2 style="margin-top:2%;margin-bottom:2%;text-align:center" class="display-4">Who I am following Posts</h2>
+</header>
+  <main>
+      <div th:each="appUser:${following}">
+          <div th:each="post : ${appUser.posts}" >
+              <div >Post by : <span th:text="${appUser.username}" class="lead"></span></div>
+              <div style="border-style: solid;border-radius: 15px;border-width: medium; width:50%;text-align:center;margin-left:25%">
+                  <p style="padding:2%" th:text="${post.body}"></p>
+                  <p style="padding:2%" th:text="${post.getCreatedAt()}"></p>
+                  <button class="btn btn-primary"  style="background-color:#3D0000; margin-left:44.5%;border: #F9F3DF; margin-right:46.5%;font-weight:bold;margin-bottom:1%"><a class="nav-link" style="color:white;font-size:14px" th:href="'/users/'+${appUser.id}" > Profile</a></button>
+              </div>
+          </div>
+      </div>
+
+  </main>
+
+
+</body>
+<footer>
+    <p class="footer">copyright &copy; 2021 ASAC </p>
+</footer>
+</html>

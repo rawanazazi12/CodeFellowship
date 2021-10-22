@@ -10,6 +10,6 @@ import java.util.Set;
 
 @Repository
 public interface PostRepository extends JpaRepository <Post , Long> {
-
-//    List<Post> findByAppUserIn(Set<ApplicationUser> appUserList);
+//    Post findByUserId(List<ApplicationUser> id);
+    Set<Post> findByAppUserIn(Set<ApplicationUser> appUserList);
 }
