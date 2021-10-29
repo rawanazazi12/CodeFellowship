@@ -40,7 +40,13 @@ public class Post {
     public Post(String body, ApplicationUser user) {
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public long getId() {
+        return id;
+    }
 
     public String getBody() {
         return body;
