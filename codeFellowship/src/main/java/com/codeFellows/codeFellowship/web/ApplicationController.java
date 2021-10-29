@@ -1,5 +1,6 @@
 package com.codeFellows.codeFellowship.web;
 import com.codeFellows.codeFellowship.domain.ApplicationUser;
+import com.codeFellows.codeFellowship.domain.Post;
 import com.codeFellows.codeFellowship.infrastructure.AppUserRepository;
 import com.codeFellows.codeFellowship.infrastructure.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,6 @@ public class ApplicationController {
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass() == ApplicationUser.class){
 
             ApplicationUser user = (ApplicationUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            System.out.println(user);
             model.addAttribute("appUser",user);
         }
 
@@ -80,8 +80,10 @@ public class ApplicationController {
     @GetMapping("/myProfile")
     public String getMyProfilePage(Principal principal, Model model) {
         ApplicationUser appUser = appUserRepository.findUserByUsername(principal.getName());
+        List <Post> posts = postRepository.findAllById(appUser.getId()).orElseThrow();
         model.addAttribute("appUser",appUser);
         model.addAttribute("principal", principal.getName());
+        model.addAttribute("posts",posts);
         return "myProfile";
     }
 

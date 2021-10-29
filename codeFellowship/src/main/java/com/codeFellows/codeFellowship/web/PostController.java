@@ -9,7 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -45,6 +47,7 @@ public class PostController {
 
         model.addAttribute("principal", principal.getName());
         model.addAttribute("appUser", user);
+        assert user != null;
         model.addAttribute("posts" , user.getPosts());
         return new RedirectView("/myProfile");
     }
@@ -70,4 +73,32 @@ public class PostController {
 
         return "feed";
     }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable long id, Model model, Principal principal) {
+        ApplicationUser loggedInUser = appUserRepository.findUserByUsername(principal.getName());
+//        long newId = Long.parseLong(id);
+        Post post = (Post) postRepository.findPostById(id).orElseThrow();
+         loggedInUser.getPosts();
+        model.addAttribute("post", post);
+        return "update-post";
+    }
+
+    @PostMapping("/update/{id}")
+    public RedirectView updateUser(@PathVariable long id,
+                             BindingResult result, Model model) {
+
+//        long newId = Long.parseLong(id);
+        Post post = (Post) postRepository.findPostById(id).orElseThrow();
+
+        if (result.hasErrors()) {
+
+            post.setId(id);
+            return new RedirectView("/update-post") ;
+        }
+        model.addAttribute("post", post);
+        postRepository.save(post);
+        return new RedirectView("/myProfile");
+    }
+
 }

@@ -89,14 +89,16 @@ text-align:center;}
                 </div>
 
                 <h3 style="padding-top:3%;padding-bottom:1%;margin-right:10%;">My posts</h3>
-                <div th:each="post : ${appUser.posts}" style="border-style: solid;border-radius: 15px;border-width: medium; width:50%;text-align:center;margin-left:47%;margin-bottom:2%;">
+                <div th:each="post : ${posts}" style="border-style: solid;border-radius: 15px;border-width: medium; width:50%;text-align:center;margin-left:47%;margin-bottom:2%;">
                     <div >
                         <div >
                             <p ><span th:text="${post.body}"></span></p>
                             <p >Created at: <span th:text="${post.createdAt}"></span></p>
                         </div>
+<!--                        <form >-->
+<!--                            <a th:href="@{/edit/__${post.id}__}" class="btn btn-primary" style="background-color:#3D0000; margin-left:47.5%;border: #F9F3DF;">Edit</a >-->
+<!--                        </form>-->
                     </div>
-
                 </div>
             </div>
         </div>
